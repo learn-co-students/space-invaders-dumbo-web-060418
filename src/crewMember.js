@@ -4,22 +4,32 @@ class CrewMember {
     this.currentShip = 'Looking for a Rig'
   }
 
-  engageWarpDrive(){
+  hasShip(){
     if (this.currentShip === 'Looking for a Rig'){
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  engageWarpDrive(){
+    if (!this.hasShip()){
       return 'had no effect'
     }
   }
 
   setsInvisibility(){
-    if (this.currentShip === 'Looking for a Rig'){
-      return 'had no effect'
+    if (this.hasShip() && this.position === 'Defender'){
+      this.currentShip.cloaked = true;
     }
     else {
+      return 'had no effect'
     }
   }
 
   chargePhasers(){
-    if (this.currentShip === 'Looking for a Rig'){
+    if (!this.hasShip()){
       return 'had no effect'
     }
   }
